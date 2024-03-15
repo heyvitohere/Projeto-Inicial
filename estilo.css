@@ -11,4 +11,8 @@ h1{
     color:red;
 }
 
-
+h1:hover{
+    transition: color 5s;
+    color :hotpink;
+    font-size: 100px;   
+}
