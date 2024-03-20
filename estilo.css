@@ -14,5 +14,5 @@ h1{
 h1:hover{
     transition: color 5s;
     color :hotpink;
-    font-size: 100px;   
+    font-size: 50px;   
 }
