@@ -15,16 +15,29 @@ var estado = document.getElementById("estado");
 
 
 function alertar(event){
-//     alert("Você clicou no botão!!! " + nome.value);
+
+const url = `https://viacep.com.br/ws/${cep.value}/json`;
+
+fetch(url)
+
+        .then(function(resposta){
+        return resposta.json();
+})
+        .then(function(dadosDoEndereco){
+        logradouro.value = dadosDoEndereco.logradouro;
+        bairro.value = dadosDoEndereco.bairro;
+        cidade.value = dadosDoEndereco.localidade;
+        estado.value = dadosDoEndereco.uf;
+        comp
+        .value = dadosDoEndereco.complemento;
+
+})
+
+        .catch(function(e){
+                alert(e.message())
+        })
 
 
-// var numero = 6;
-// var resultado = numero % 2;
-// if(resultado == 0 ){
-//     alert ("este número é par: "+numero);
-// }
-
-// }
  saida.innerText = "Nome:" +nome.value +
         "\n Email:" +email.value +
         "\n Celular:" +celular.value +
