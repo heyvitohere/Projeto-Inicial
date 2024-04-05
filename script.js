@@ -14,8 +14,21 @@ var cidade = document.getElementById("cidade");
 var estado = document.getElementById("estado");
 
 
+
+
 function alertar(event){
 
+    
+       //validação dos dados
+       if(cep.value.length < 8 ){
+        alert('Entre com um CEP válido!');
+        return;
+       }      
+
+           // formatar os dados
+           cep.value = cep.value.replace ('-','');
+       
+       
 const url = `https://viacep.com.br/ws/${cep.value}/json`;
 
 fetch(url)
@@ -28,15 +41,16 @@ fetch(url)
         bairro.value = dadosDoEndereco.bairro;
         cidade.value = dadosDoEndereco.localidade;
         estado.value = dadosDoEndereco.uf;
-        comp
-        .value = dadosDoEndereco.complemento;
+        comp.value = dadosDoEndereco.complemento;
 
+        saidaDeDados (); // chamada da função
 })
 
         .catch(function(e){
                 alert(e.message())
         })
 
+        function saidaDeDados(){
 
  saida.innerText = "Nome:" +nome.value +
         "\n Email:" +email.value +
@@ -48,4 +62,7 @@ fetch(url)
         "\n Bairro:" +bairro.value +
         "\n Cidade:" +cidade.value +
         "\n Estado:" +estado.value;
+
+
+        }
 }
